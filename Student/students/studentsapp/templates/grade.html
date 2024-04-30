@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Submissions</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about.html">About Us</a>
+
+
+
+
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Student Submissions Content -->
+<div class="container mt-5">
+  <h2>Student Submissions</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form action="/grade_submission" method="post">
+        <div class="form-group">
+          <label for="student_id">Student ID:</label>
+          <input type="text" class="form-control" id="student_id" name="student_id">
+        </div>
+        <div class="form-group">
+          <label for="submission">Student Submission:</label>
+          <textarea class="form-control" id="submission" name="submission" rows="5"></textarea>
+        </div>
+        <a href="{% url 'grade' %}" class="btn btn-info grade.html" data-target="course-1">Grade</a>
+
+        <div class="form-group">
+          <label for="grade">Grade:</label>
+          <input type="text" class="form-control" id="grade" name="grade">
+        </div>
+        <button type="submit" class="btn btn-primary">Grade Submission</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

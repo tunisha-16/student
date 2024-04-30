@@ -1,0 +1,84 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* CSS styles */
+        form {
+            margin: 0 auto;
+            width: 550px;
+            padding: 77px;
+            border: 1px solid #ccc;
+            border-radius: 77px;
+            background-color: #d4b1d9;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        input[type="reset"] {
+            width: calc(100% - 10px);
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+        }
+        h3 {
+            text-align: center;
+            text-decoration: underline;
+        }
+        body {
+            background-image: url('https://img.freepik.com/free-photo/blue-abstract-gradient-wave-wallpaper_53876-108364.jpg?w=1380&t=st=1699118345~exp=1699118945~hmac=99e10981a035d9a560f54795fafcce87af6fc97f5e30dd70a0cf49bde6cbd249');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <h3>Admin Login</h3>
+    <form method="post" action="adminhome">
+        <table>
+            <tr>
+                <td><label for="username">Enter Username</label></td>
+                <td><input type="text" name="username" required/></td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><label for="password">Enter Password</label></td>
+                <td><input type="password" name="password" required/></td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr class="auth_actions">
+                <td colspan="2">
+                    <a href="forgotpassword.html">Forgot Password?</a>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" class="addbutton"/></td>
+                <td><input type="reset" value="Clear" class="addbutton"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

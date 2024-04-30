@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Management System</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    /* Custom Styles */
+    .course-card {
+      margin-bottom: 20px;
+    }
+    .course-details {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="adminhome.html">Home</a> <!-- Updated link -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="addcourse.html">Add New Course</a> <!-- Updated link -->
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Course Viewing Section -->
+  <div class="container mt-5">
+    <h2>Available Courses</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card course-card">
+          <div class="card-body">
+            <h5 class="card-title">Course 1</h5>
+            <p class="card-text">This is a sample course description.</p>
+            <a href="#" class="btn btn-primary view-details" data-target="course-1">View Details</a>
+            <button class="btn btn-danger delete-course" data-target="course-1">Delete Course</button>
+            <!-- Only display the grading button if the user is authenticated as faculty -->
+            <!-- You'll need to implement authentication and authorization logic -->
+            <!-- For demonstration, I'm using a placeholder link to the grading page -->
+            <a href="#" class="btn btn-info grade-course" data-target="course-1">Grade</a>
+            <a href="submission.html" class="btn btn-success">Submit Assignment</a> <!-- Link to submission page -->
+            <div class="course-details" id="course-1">
+              <!-- Course 1 Details -->
+              <p><strong>Course Code:</strong> ABC123</p>
+              <p><strong>Instructor:</strong> John Doe</p>
+              <p><strong>Location:</strong> Room 101</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat for other course cards -->
+
+      <!-- Course 2 -->
+      <div class="col-md-4">
+        <div class="card course-card">
+          <div class="card-body">
+            <h5 class="card-title">Course 2</h5>
+            <p class="card-text">This is another sample course description.</p>
+            <a href="#" class="btn btn-primary view-details" data-target="course-2">View Details</a>
+            <button class="btn btn-danger delete-course" data-target="course-2">Delete Course</button>
+            <a href="#" class="btn btn-info grade-course" data-target="course-2">Grade</a>
+            <a href="submission.html" class="btn btn-success">Submit Assignment</a>
+            <div class="course-details" id="course-2">
+              <p><strong>Course Code:</strong> DEF456</p>
+              <p><strong>Instructor:</strong> Jane Smith</p>
+              <p><strong>Location:</strong> Room 202</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="col-md-4">
+        <div class="card course-card">
+          <div class="card-body">
+            <h5 class="card-title">Course 3</h5>
+            <p class="card-text">This is a third sample course description.</p>
+            <a href="#" class="btn btn-primary view-details" data-target="course-3">View Details</a>
+            <button class="btn btn-danger delete-course" data-target="course-3">Delete Course</button>
+            <a href="#" class="btn btn-info grade-course" data-target="course-3">Grade</a>
+            <a href="submission.html" class="btn btn-success">Submit Assignment</a>
+            <div class="course-details" id="course-3">
+              <p><strong>Course Code:</strong> GHI789</p>
+              <p><strong>Instructor:</strong> Michael Johnson</p>
+              <p><strong>Location:</strong> Room 303</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.view-details').click(function() {
+        var target = $(this).data('target');
+        $('#' + target).toggle();
+      });
+
+      $('.delete-course').click(function() {
+        var target = $(this).data('target');
+        $('#' + target).parent('.course-card').remove();
+      });
+
+      $('.grade-course').click(function() {
+        // Implement authentication and authorization logic here
+        // Only faculty members should have access to this functionality
+        // For demonstration, I'm using an alert message
+        alert("You don't have permission to grade assignments.");
+      });
+    });
+  </script>
+</body>
+</html>

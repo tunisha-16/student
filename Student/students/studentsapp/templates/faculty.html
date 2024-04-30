@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?cs=srgb&dl=pexels-jess-bailey-designs-743986.jpg&fm=jpg');
+        }
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            font-size: 20px;
+            color: white !important;
+            margin-right: 20px; /* Increase spacing between navbar items */
+        }
+        /* Adjust form layout */
+        #addStudentForm {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #addStudentForm label,
+        #addStudentForm input {
+            width: calc(50% - 10px); /* Set width for form fields */
+            margin-bottom: 10px;
+        }
+        #addStudentForm button {
+            width: 100%; /* Set width for submit button */
+        }
+    </style>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <button class="nav-link btn btn-dark" type="button">Home</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link btn btn-dark" type="button">Student</button> <!-- Changed from "Student" to "Faculty" -->
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link btn btn-dark" type="button">Faculty</button> <!-- Duplicate entry for demonstration purposes -->
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link btn btn-dark" type="button">Courses</button>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
+                <li class="nav-item">
+                    <button class="nav-link btn btn-dark" type="button">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div align="center" style="margin-top: 20px;">
+        <h3>Enter New Faculty Details</h3> <!-- Changed from "Student" to "Faculty" -->
+        <form id="addStudentForm">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender">
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="department">
+            <label for="program">Program:</label>
+            <input type="text" id="program" name="program">
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester" name="semester">
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact">
+            <button id="addStudentButton" type="submit" class="btn btn-dark">Add Faculty</button> <!-- Changed from "Student" to "Faculty" -->
+        </form>
+    </div>
+
+    <br><br>
+    <!-- Add search input field and button -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group mb-3">
+                    <input type="text" id="facultySearch" class="form-control" placeholder="Search faculty" aria-label="Search faculty" aria-describedby="searchButton">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table align="center" border="2" width="80%" class="table table-bordered table-striped">
+        <thead>
+            <tr bgcolor="lightblue" align="center">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Department</th>
+                <th>Program</th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Action</th> <!-- Added column for delete button -->
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <!-- Sample row, replace with actual faculty data -->
+            <tr align="center">
+                <td>001</td>
+                <td>John Doe</td>
+                <td>Male</td>
+                <td>Computer Science</td>
+                <td>B.Tech</td>
+                <td>5</td>
+                <td>2023</td>
+                <td>john.doe@example.com</td>
+                <td>1234567890</td>
+                <td><button class="btn btn-danger deleteBtn">Delete</button></td> <!-- Added delete button -->
+            </tr>
+            <!-- Add more rows for additional faculty -->
+        </tbody>
+    </table>
+
+    <!-- Include Bootstrap and jQuery libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Filter function -->
+    <script>
+        $(document).ready(function(){
+            // Search Faculty Functionality
+            $("#searchButton").click(function() {
+                var value = $("#facultySearch").val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            // Add Faculty Form Submission
+            $("#addStudentForm").submit(function(event){
+                event.preventDefault(); // Prevent the default form submission
+                // Retrieve the values from the form fields
+                var id = $("#id").val();
+                var name = $("#name").val();
+                var gender = $("#gender").val();
+                var department = $("#department").val();
+                var program = $("#program").val();
+                var semester = $("#semester").val();
+                var year = $("#year").val();
+                var email = $("#email").val();
+                var contact = $("#contact").val();
+                // Append the new row to the table with a delete button
+                $("#myTable").append("<tr><td>"+id+"</td><td>"+name+"</td><td>"+gender+"</td><td>"+department+"</td><td>"+program+"</td><td>"+semester+"</td><td>"+year+"</td><td>"+email+"</td><td>"+contact+"</td><td><button class='btn btn-danger deleteBtn'>Delete</button></td></tr>");
+                // Clear the form fields
+                $("#addStudentForm")[0].reset();
+            });
+
+            // Delete Faculty Functionality
+            $(document).on("click", ".deleteBtn", function(){
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>
+</body>
+</html>
